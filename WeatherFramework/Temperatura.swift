@@ -25,7 +25,7 @@ public struct Temperatura {
     
     var k: Double
     
-    public func returnFormat(formatTemp: Stopien) -> Double {
+    public func returnFormat(_ formatTemp: Stopien) -> Double {
         switch formatTemp {
         case .c:
             return self.c
