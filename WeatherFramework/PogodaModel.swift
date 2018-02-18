@@ -25,7 +25,7 @@ public struct PogodaModel {
     var cityName: String
 }
 
-struct ModelDzisiaj {
+public struct ModelDzisiaj {
     var temp: Temperatura
     var opis: String
     var deszcz: Double
@@ -33,13 +33,13 @@ struct ModelDzisiaj {
     var wiatr: Double
 }
 
-struct ModelNast24h {
+public struct ModelNast24h {
     var godz: Date
     var opis: String
     var temp: Temperatura
 }
 
-struct ModelPozniej {
+public struct ModelPozniej {
     var data: Date
     var tempDzien: Temperatura?
     var opisDzien: String?

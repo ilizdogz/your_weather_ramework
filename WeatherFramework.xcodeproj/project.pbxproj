@@ -11,6 +11,7 @@
 		A00B2944203A2937004CDE7B /* GetWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00B2941203A2936004CDE7B /* GetWeatherData.swift */; };
 		A00B2945203A2937004CDE7B /* PogodaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00B2942203A2937004CDE7B /* PogodaModel.swift */; };
 		A00B2946203A2937004CDE7B /* Temperatura.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00B2943203A2937004CDE7B /* Temperatura.swift */; };
+		A00B2948203A2DB4004CDE7B /* YourWeatherFramework.podspec in Resources */ = {isa = PBXBuildFile; fileRef = A00B2947203A2DB4004CDE7B /* YourWeatherFramework.podspec */; };
 		A0A8BD54203A1FA90051A9AD /* WeatherFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0A8BD4A203A1FA90051A9AD /* WeatherFramework.framework */; };
 		A0A8BD59203A1FA90051A9AD /* WeatherFrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A8BD58203A1FA90051A9AD /* WeatherFrameworkTests.swift */; };
 		A0A8BD5B203A1FA90051A9AD /* WeatherFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = A0A8BD4D203A1FA90051A9AD /* WeatherFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -34,6 +35,7 @@
 		A00B2941203A2936004CDE7B /* GetWeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetWeatherData.swift; sourceTree = "<group>"; };
 		A00B2942203A2937004CDE7B /* PogodaModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PogodaModel.swift; sourceTree = "<group>"; };
 		A00B2943203A2937004CDE7B /* Temperatura.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Temperatura.swift; sourceTree = "<group>"; };
+		A00B2947203A2DB4004CDE7B /* YourWeatherFramework.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = YourWeatherFramework.podspec; sourceTree = "<group>"; };
 		A0A8BD4A203A1FA90051A9AD /* WeatherFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WeatherFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0A8BD4D203A1FA90051A9AD /* WeatherFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherFramework.h; sourceTree = "<group>"; };
 		A0A8BD4E203A1FA90051A9AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				A00B293F203A23D0004CDE7B /* LICENSE */,
+				A00B2947203A2DB4004CDE7B /* YourWeatherFramework.podspec */,
 				A0A8BD4C203A1FA90051A9AD /* WeatherFramework */,
 				A0A8BD57203A1FA90051A9AD /* WeatherFrameworkTests */,
 				A0A8BD4B203A1FA90051A9AD /* Products */,
@@ -219,6 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A00B2940203A23D0004CDE7B /* LICENSE in Resources */,
+				A00B2948203A2DB4004CDE7B /* YourWeatherFramework.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
