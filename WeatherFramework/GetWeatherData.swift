@@ -14,6 +14,7 @@ func getLang() -> String {
     if (Locale.preferredLanguages[0].lowercased() == "pl") {
         return "&lang=pl"
     } else {
+        print(Locale.preferredLanguages)
         return ""
     }
 }
@@ -27,7 +28,7 @@ public func getDataWithId(id: String, apiKey: String) -> PogodaModel? {
     }
 }
 
-public func getDataWithLocation(lat: Double, lon: Double, apiKey: String, lang: Locale) -> PogodaModel? {
+public func getDataWithLocation(lat: Double, lon: Double, apiKey: String) -> PogodaModel? {
     let urlArray: [RodzajJSON: String] = [.prognoza: "https://api.openweathermap.org/data/2.5/forecast?lat=\(lat)&lon=\(lon)&appid=\(apiKey)\(getLang())", .teraz: "https://api.openweathermap.org/data/2.5/weather?lat=\(lat)&lon=\(lon)&appid=\(apiKey)\(getLang())"]
     if let data = getWeatherData(urlArray) {
         return parse(data)
