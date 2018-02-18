@@ -15,15 +15,15 @@ public enum Stopien: String {
 }
 
 public struct Temperatura {
-    var c: Double {
+    public var c: Double {
         return k - 273.15
     }
     
-    var f: Double {
+    public var f: Double {
         return c * 1.8 + 32
     }
     
-    var k: Double
+    public var k: Double
     
     public func returnFormat(_ formatTemp: Stopien) -> Double {
         switch formatTemp {
