@@ -10,15 +10,15 @@ import Foundation
 import SwiftyJSON
 import Timepiece
 
-func getLang(_ locale: Locale) -> String {
-    if (locale.identifier == "pl-PL") {
+func getLang(_ locale: String) -> String {
+    if (locale == "pl-PL") {
         return "&lang=pl"
     } else {
         return ""
     }
 }
 
-public func getDataWithId(id: String, apiKey: String, lang: Locale) -> PogodaModel? {
+public func getDataWithId(id: String, apiKey: String, lang: String) -> PogodaModel? {
     let urlArray: [RodzajJSON: String] = [.prognoza: "https://api.openweathermap.org/data/2.5/forecast?id=\(id)&appid=\(apiKey)\(getLang(lang))", .teraz: "https://api.openweathermap.org/data/2.5/weather?id=\(id)&appid=\(apiKey)\(getLang(lang))"]
     if let data = getWeatherData(urlArray) {
         return parse(data)
@@ -27,7 +27,7 @@ public func getDataWithId(id: String, apiKey: String, lang: Locale) -> PogodaMod
     }
 }
 
-public func getDataWithLocation(lat: Double, lon: Double, apiKey: String, lang: Locale) -> PogodaModel? {
+public func getDataWithLocation(lat: Double, lon: Double, apiKey: String, lang: String) -> PogodaModel? {
     let urlArray: [RodzajJSON: String] = [.prognoza: "https://api.openweathermap.org/data/2.5/forecast?lat=\(lat)&lon=\(lon)&appid=\(apiKey)\(getLang(lang))", .teraz: "https://api.openweathermap.org/data/2.5/weather?lat=\(lat)&lon=\(lon)&appid=\(apiKey)\(getLang(lang))"]
     if let data = getWeatherData(urlArray) {
         return parse(data)
