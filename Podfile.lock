@@ -1,0 +1,15 @@
+PODS:
+  - SwiftyJSON (4.0.0)
+  - Timepiece (1.3.1)
+
+DEPENDENCIES:
+  - SwiftyJSON (~> 4.0.0)
+  - Timepiece (~> 1.3.1)
+
+SPEC CHECKSUMS:
+  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
+  Timepiece: c0760ec0e545697d86b80424dcd2b4d5ef66cf51
+
+PODFILE CHECKSUM: 3b91a49dbda0ecd7928606003f6b8e73c27f191c
+
+COCOAPODS: 1.4.0
