@@ -10,19 +10,10 @@ import Foundation
 import UIKit
 
 public struct PogodaModel {
-//    var godzina: Date
-//    var temp: Temperatura
-//    var opis: String
-//    var ciśnienie: Int
-//    var wilgotność: String
-//    var zachmurzenie: String
-//    var wiatr: Double
-//    var deszcz: Double
-//    var okragleRogi: UIRectCorner?
-    var dzisiaj: ModelDzisiaj
-    var nast24h: [ModelNast24h]
-    var pozniej: [ModelPozniej]
-    var cityName: String
+    public var dzisiaj: ModelDzisiaj
+    public var nast24h: [ModelNast24h]
+    public var pozniej: [ModelPozniej]
+    public var cityName: String
 }
 
 public struct ModelDzisiaj {
