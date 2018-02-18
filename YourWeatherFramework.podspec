@@ -6,7 +6,7 @@ s.name = "YourWeatherFramework"
 s.summary = "Loads API data and provides essential classes for your_weather app"
 s.requires_arc = true
 
-s.version = "0.3.0"
+s.version = "0.3.1"
 
 s.license = { :type => "MIT", :file => "LICENSE" }
 

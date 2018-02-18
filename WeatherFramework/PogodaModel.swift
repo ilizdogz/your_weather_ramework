@@ -17,26 +17,26 @@ public struct PogodaModel {
 }
 
 public struct ModelDzisiaj {
-    var temp: Temperatura
-    var opis: String
-    var deszcz: Double
-    var snieg: Double?
-    var wiatr: Double
+    public var temp: Temperatura
+    public var opis: String
+    public var deszcz: Double
+    public var snieg: Double?
+    public var wiatr: Double
 }
 
 public struct ModelNast24h {
-    var godz: Date
-    var opis: String
-    var temp: Temperatura
+    public var godz: Date
+    public var opis: String
+    public var temp: Temperatura
 }
 
 public struct ModelPozniej {
-    var data: Date
-    var tempDzien: Temperatura?
-    var opisDzien: String?
-    var tempNoc: Temperatura?
-    var opisNoc: String?
-    public init(data: Date, tempDzien: Temperatura, opisDzien: String) {
+    public var data: Date
+    public var tempDzien: Temperatura?
+    public var opisDzien: String?
+    public var tempNoc: Temperatura?
+    public var opisNoc: String?
+    init(data: Date, tempDzien: Temperatura, opisDzien: String) {
         self.tempDzien = tempDzien
         self.data = data
         self.opisDzien = opisDzien
