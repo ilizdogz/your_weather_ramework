@@ -1,12 +1,12 @@
 Pod::Spec.new do |s|
 
 s.platform = :ios
-s.ios.deployment_target = '8.0'
+s.ios.deployment_target = '11.0'
 s.name = "YourWeatherFramework"
 s.summary = "Loads API data and provides essential classes for your_weather app"
 s.requires_arc = true
 
-s.version = "0.3.8"
+s.version = "0.3.9"
 
 s.license = { :type => "MIT", :file => "LICENSE" }
 

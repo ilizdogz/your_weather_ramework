@@ -11,7 +11,7 @@ import SwiftyJSON
 import Timepiece
 
 func getLang() -> String {
-    if (Locale.preferredLanguages[0].lowercased() == "pl") {
+    if (Locale.preferredLanguages[0] == "pl-PL") {
         return "&lang=pl"
     } else {
         print(Locale.preferredLanguages)
