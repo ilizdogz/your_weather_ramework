@@ -9,6 +9,7 @@
 import Foundation
 import SwiftyJSON
 import Timepiece
+import CoreLocation
 
 func getLang() -> String {
     if (Locale.preferredLanguages[0] == "pl-PL") {
@@ -32,8 +33,8 @@ public func getDataWithId(id: String, apiKey: String, callback: @escaping (Pogod
     }
 }
 
-public func getDataWithLocation(lat: Double, lon: Double, apiKey: String, callback: @escaping (PogodaModel?, NSError?) -> Void) {
-    let urlArray: [RodzajJSON: String] = [.prognoza: "https://api.openweathermap.org/data/2.5/forecast?lat=\(lat)&lon=\(lon)&appid=\(apiKey)\(getLang())", .teraz: "https://api.openweathermap.org/data/2.5/weather?lat=\(lat)&lon=\(lon)&appid=\(apiKey)\(getLang())"]
+public func getDataWithLocation(location: CLLocation, apiKey: String, callback: @escaping (PogodaModel?, NSError?) -> Void) {
+    let urlArray: [RodzajJSON: String] = [.prognoza: "https://api.openweathermap.org/data/2.5/forecast?lat=\(location.coordinate.latitude)&lon=\(location.coordinate.longitude)&appid=\(apiKey)\(getLang())", .teraz: "https://api.openweathermap.org/data/2.5/weather?lat=\(location.coordinate.latitude)&lon=\(location.coordinate.longitude)&appid=\(apiKey)\(getLang())"]
     if let data = getWeatherData(urlArray) {
         if let data = parse(data) {
             callback(data, nil)
