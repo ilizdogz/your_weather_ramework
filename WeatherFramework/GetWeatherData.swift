@@ -32,12 +32,16 @@ public func getDataWithId(id: String, apiKey: String, callback: @escaping (Pogod
     }
 }
 
-public func getDataWithLocation(lat: Double, lon: Double, apiKey: String) -> PogodaModel? {
+public func getDataWithLocation(lat: Double, lon: Double, apiKey: String, callback: @escaping (PogodaModel?, NSError?) -> Void) {
     let urlArray: [RodzajJSON: String] = [.prognoza: "https://api.openweathermap.org/data/2.5/forecast?lat=\(lat)&lon=\(lon)&appid=\(apiKey)\(getLang())", .teraz: "https://api.openweathermap.org/data/2.5/weather?lat=\(lat)&lon=\(lon)&appid=\(apiKey)\(getLang())"]
     if let data = getWeatherData(urlArray) {
-        return parse(data)
+        if let data = parse(data) {
+            callback(data, nil)
+        } else {
+            callback(nil, NSError())
+        }
     } else {
-        return nil
+        callback(nil, NSError())
     }
 }
 
