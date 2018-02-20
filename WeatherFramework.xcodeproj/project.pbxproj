@@ -35,7 +35,7 @@
 		A00B2941203A2936004CDE7B /* GetWeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetWeatherData.swift; sourceTree = "<group>"; };
 		A00B2942203A2937004CDE7B /* PogodaModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PogodaModel.swift; sourceTree = "<group>"; };
 		A00B2943203A2937004CDE7B /* Temperatura.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Temperatura.swift; sourceTree = "<group>"; };
-		A00B2947203A2DB4004CDE7B /* YourWeatherFramework.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = YourWeatherFramework.podspec; sourceTree = "<group>"; };
+		A00B2947203A2DB4004CDE7B /* YourWeatherFramework.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = YourWeatherFramework.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A0A8BD4A203A1FA90051A9AD /* WeatherFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WeatherFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0A8BD4D203A1FA90051A9AD /* WeatherFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherFramework.h; sourceTree = "<group>"; };
 		A0A8BD4E203A1FA90051A9AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
