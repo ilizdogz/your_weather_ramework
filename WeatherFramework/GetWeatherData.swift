@@ -115,6 +115,9 @@ func parse(_ results: [RodzajJSON: JSON]) -> PogodaModel? {
                 } else if (i == 1) {
                     //pierwszy element to poprzednia noc
                     list.insert(ModelPozniej(data: prevItem.data, tempNoc: prevItem.tempNoc!, opisNoc: prevItem.opisNoc!), at: 0)
+                } else if (i == tempPozniej.count - 1) {
+                    // ostatni element to nastepny dzien
+                    list.append(ModelPozniej(data: item.data, tempDzien: item.tempDzien!, opisDzien: item.opisDzien!))
                 }
             }
             nast24h = tempNast24h
