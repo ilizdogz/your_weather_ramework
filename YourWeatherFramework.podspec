@@ -19,7 +19,7 @@ s.source = { :git => "git@github.com:ilizdogz/your_weather_ramework.git", :tag =
 
 s.framework = "UIKit"
 s.swift_version = '3.2'
-s.dependency 'SwiftyJSON', '~> 4.0.0'
+s.dependency 'SwiftyJSON', '~> 4.1.0'
 s.dependency 'Timepiece', '~> 1.3.1'
 
 s.source_files = "WeatherFramework/**/*.{swift}"
