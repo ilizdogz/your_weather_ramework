@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		A00B2940203A23D0004CDE7B /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = A00B293F203A23D0004CDE7B /* LICENSE */; };
 		A00B2944203A2937004CDE7B /* GetWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00B2941203A2936004CDE7B /* GetWeatherData.swift */; };
-		A00B2945203A2937004CDE7B /* PogodaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00B2942203A2937004CDE7B /* PogodaModel.swift */; };
-		A00B2946203A2937004CDE7B /* Temperatura.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00B2943203A2937004CDE7B /* Temperatura.swift */; };
+		A00B2945203A2937004CDE7B /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00B2942203A2937004CDE7B /* WeatherModel.swift */; };
+		A00B2946203A2937004CDE7B /* Temperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00B2943203A2937004CDE7B /* Temperature.swift */; };
 		A00B2948203A2DB4004CDE7B /* YourWeatherFramework.podspec in Resources */ = {isa = PBXBuildFile; fileRef = A00B2947203A2DB4004CDE7B /* YourWeatherFramework.podspec */; };
 		A0A8BD54203A1FA90051A9AD /* WeatherFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0A8BD4A203A1FA90051A9AD /* WeatherFramework.framework */; };
 		A0A8BD59203A1FA90051A9AD /* WeatherFrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A8BD58203A1FA90051A9AD /* WeatherFrameworkTests.swift */; };
@@ -33,8 +33,8 @@
 		7BE08E7813DDEFB4EFE01A7B /* Pods-WeatherFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherFramework.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherFramework/Pods-WeatherFramework.debug.xcconfig"; sourceTree = "<group>"; };
 		A00B293F203A23D0004CDE7B /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		A00B2941203A2936004CDE7B /* GetWeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetWeatherData.swift; sourceTree = "<group>"; };
-		A00B2942203A2937004CDE7B /* PogodaModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PogodaModel.swift; sourceTree = "<group>"; };
-		A00B2943203A2937004CDE7B /* Temperatura.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Temperatura.swift; sourceTree = "<group>"; };
+		A00B2942203A2937004CDE7B /* WeatherModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
+		A00B2943203A2937004CDE7B /* Temperature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Temperature.swift; sourceTree = "<group>"; };
 		A00B2947203A2DB4004CDE7B /* YourWeatherFramework.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = YourWeatherFramework.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A0A8BD4A203A1FA90051A9AD /* WeatherFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WeatherFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0A8BD4D203A1FA90051A9AD /* WeatherFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherFramework.h; sourceTree = "<group>"; };
@@ -101,8 +101,8 @@
 			children = (
 				A0A8BD4D203A1FA90051A9AD /* WeatherFramework.h */,
 				A00B2941203A2936004CDE7B /* GetWeatherData.swift */,
-				A00B2942203A2937004CDE7B /* PogodaModel.swift */,
-				A00B2943203A2937004CDE7B /* Temperatura.swift */,
+				A00B2942203A2937004CDE7B /* WeatherModel.swift */,
+				A00B2943203A2937004CDE7B /* Temperature.swift */,
 				A0A8BD4E203A1FA90051A9AD /* Info.plist */,
 			);
 			path = WeatherFramework;
@@ -261,8 +261,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A00B2944203A2937004CDE7B /* GetWeatherData.swift in Sources */,
-				A00B2945203A2937004CDE7B /* PogodaModel.swift in Sources */,
-				A00B2946203A2937004CDE7B /* Temperatura.swift in Sources */,
+				A00B2945203A2937004CDE7B /* WeatherModel.swift in Sources */,
+				A00B2946203A2937004CDE7B /* Temperature.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

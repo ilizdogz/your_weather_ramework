@@ -20,8 +20,8 @@ func getLang() -> String {
     }
 }
 
-public func getDataWithId(id: String, apiKey: String, callback: @escaping (PogodaModel?, NSError?) -> Void) {
-    let urlArray: [RodzajJSON: String] = [.prognoza: "https://api.openweathermap.org/data/2.5/forecast?id=\(id)&appid=\(apiKey)\(getLang())", .teraz: "https://api.openweathermap.org/data/2.5/weather?id=\(id)&appid=\(apiKey)\(getLang())"]
+public func getDataWithId(id: String, apiKey: String, callback: @escaping (WeatherModel?, NSError?) -> Void) {
+    let urlArray: [JSONType: String] = [.forecast: "https://api.openweathermap.org/data/2.5/forecast?id=\(id)&appid=\(apiKey)\(getLang())", .now: "https://api.openweathermap.org/data/2.5/weather?id=\(id)&appid=\(apiKey)\(getLang())"]
     if let data = getWeatherData(urlArray) {
         if let data = parse(data) {
             callback(data, nil)
@@ -33,8 +33,8 @@ public func getDataWithId(id: String, apiKey: String, callback: @escaping (Pogod
     }
 }
 
-public func getDataWithLocation(location: CLLocation, apiKey: String, callback: @escaping (PogodaModel?, NSError?) -> Void) {
-    let urlArray: [RodzajJSON: String] = [.prognoza: "https://api.openweathermap.org/data/2.5/forecast?lat=\(location.coordinate.latitude)&lon=\(location.coordinate.longitude)&appid=\(apiKey)\(getLang())", .teraz: "https://api.openweathermap.org/data/2.5/weather?lat=\(location.coordinate.latitude)&lon=\(location.coordinate.longitude)&appid=\(apiKey)\(getLang())"]
+public func getDataWithLocation(location: CLLocation, apiKey: String, callback: @escaping (WeatherModel?, NSError?) -> Void) {
+    let urlArray: [JSONType: String] = [.forecast: "https://api.openweathermap.org/data/2.5/forecast?lat=\(location.coordinate.latitude)&lon=\(location.coordinate.longitude)&appid=\(apiKey)\(getLang())", .now: "https://api.openweathermap.org/data/2.5/weather?lat=\(location.coordinate.latitude)&lon=\(location.coordinate.longitude)&appid=\(apiKey)\(getLang())"]
     if let data = getWeatherData(urlArray) {
         if let data = parse(data) {
             callback(data, nil)
@@ -46,8 +46,8 @@ public func getDataWithLocation(location: CLLocation, apiKey: String, callback: 
     }
 }
 
-func getWeatherData(_ array: [RodzajJSON: String]) -> [RodzajJSON: JSON]? {
-    var results = [RodzajJSON: JSON]()
+func getWeatherData(_ array: [JSONType: String]) -> [JSONType: JSON]? {
+    var results = [JSONType: JSON]()
     for (rodzaj, adres) in array {
         if let url = URL(string: adres) {
             if let data = try? Data(contentsOf: url) {
@@ -62,85 +62,84 @@ func getWeatherData(_ array: [RodzajJSON: String]) -> [RodzajJSON: JSON]? {
     return results
 }
 
-func parse(_ results: [RodzajJSON: JSON]) -> PogodaModel? {
-    var dzisiaj: ModelDzisiaj?
-    var nast24h: [ModelNast24h]?
-    var pozniej: [ModelPozniej]?
+func parse(_ results: [JSONType: JSON]) -> WeatherModel? {
+    var today: TodayModel?
+    var next24h: [Next24hModel]?
+    var later: [LaterModel]?
     var cityName: String?
-    for (typ, json) in results {
-        switch typ {
-        case .prognoza:
+    for (type, json) in results {
+        switch type {
+        case .forecast:
             cityName = "\(json["city"]["name"].stringValue), \(json["city"]["country"].stringValue)".lowercased()
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = .short
             dateFormatter.timeStyle = .long
-            var tempNast24h = [ModelNast24h]()
-            var tempPozniej = [ModelPozniej]()
+            var tempNext24h = [Next24hModel]()
+            var tempLater = [LaterModel]()
             for index in 0...json["list"].count {
                 let obj = json["list"][index]
-                let godzinaWInt = obj["dt"].intValue
-                let godzina = Date(timeIntervalSince1970: TimeInterval(godzinaWInt))
-                let temp = Temperatura(k: obj["main"]["temp"].doubleValue)
-                let opis = obj["weather"][0]["description"].stringValue
+                let dtInt = obj["dt"].intValue
+                let time = Date(timeIntervalSince1970: TimeInterval(dtInt))
+                let temp = Temperature(k: obj["main"]["temp"].doubleValue)
+                let desc = obj["weather"][0]["description"].stringValue
                 if (index < 8) {
-                    tempNast24h.append(ModelNast24h(godz: godzina, opis: opis, temp: temp))
+                    tempNext24h.append(Next24hModel(time: time, desc: desc, temp: temp))
                 } else {
-                    if (godzina.hour >= 21) {
-                        tempPozniej.append(ModelPozniej(data: godzina, tempNoc: temp, opisNoc: opis))
-                    } else if (godzina.hour > 11 && godzina.hour < 15) {
-                        tempPozniej.append(ModelPozniej(data: godzina, tempDzien: temp, opisDzien: opis))
+                    if (time.hour >= 21) {
+                        tempLater.append(LaterModel(date: time, tempNight: temp, descNight: desc))
+                    } else if (time.hour > 11 && time.hour < 15) {
+                        tempLater.append(LaterModel(date: time, tempDay: temp, descDay: desc))
                     }
                 }
                 
             }
-            var list = [ModelPozniej]()
-            //            od 2, bo i tak bierzemy wczesniejszy
-            for i in 1 ..< tempPozniej.count {
-                let item = tempPozniej[i]
-                let prevItem = tempPozniej[i - 1]
-                if (item.data.day == prevItem.data.day && item.data.month == prevItem.data.month && item.data.year == prevItem.data.year) {
+            var list = [LaterModel]()
+            for i in 1 ..< tempLater.count {
+                let item = tempLater[i]
+                let prevItem = tempLater[i - 1]
+                if (item.date.day == prevItem.date.day && item.date.month == prevItem.date.month && item.date.year == prevItem.date.year) {
                     let items = [item, prevItem]
-                    var modelPozniej = ModelPozniej(data: item.data)
+                    var laterModel = LaterModel(date: item.date)
                     for thing in items {
-                        if let opisDzien = thing.opisDzien, let tempDzien = thing.tempDzien {
-                            modelPozniej.opisDzien = opisDzien
-                            modelPozniej.tempDzien = tempDzien
+                        if let descDay = thing.descDay, let tempDay = thing.tempDay {
+                            laterModel.descDay = descDay
+                            laterModel.tempDay = tempDay
                         }
-                        if let opisNoc = thing.opisNoc, let tempNoc = thing.tempNoc {
-                            modelPozniej.opisNoc = opisNoc
-                            modelPozniej.tempNoc = tempNoc
+                        if let descNight = thing.descNight, let tempNight = thing.tempNight {
+                            laterModel.descNight = descNight
+                            laterModel.tempNight = tempNight
                         }
                     }
-                    list.append(modelPozniej)
+                    list.append(laterModel)
                 } else if (i == 1) {
                     //pierwszy element to poprzednia noc
-                    list.insert(ModelPozniej(data: prevItem.data, tempNoc: prevItem.tempNoc!, opisNoc: prevItem.opisNoc!), at: 0)
-                } else if (i == tempPozniej.count - 1) {
+                    list.insert(LaterModel(date: prevItem.date, tempNight: prevItem.tempNight!, descNight: prevItem.descNight!), at: 0)
+                } else if (i == tempLater.count - 1) {
                     // ostatni element to nastepny dzien
-                    list.append(ModelPozniej(data: item.data, tempDzien: item.tempDzien!, opisDzien: item.opisDzien!))
+                    list.append(LaterModel(date: item.date, tempDay: item.tempDay!, descDay: item.descDay!))
                 }
             }
-            nast24h = tempNast24h
-            pozniej = list
-        case .teraz:
-            let temp = Temperatura(k: json["main"]["temp"].doubleValue)
-            let opis = json["weather"][0]["description"].stringValue
-            let wiatr = json["wind"]["speed"].doubleValue
-            var deszcz: Double = 0
-            var snieg: Double?
+            next24h = tempNext24h
+            later = list
+        case .now:
+            let temp = Temperature(k: json["main"]["temp"].doubleValue)
+            let desc = json["weather"][0]["description"].stringValue
+            let wind = json["wind"]["speed"].doubleValue
+            var rain: Double = 0
+            var snow: Double?
             if (json["snow"]["3h"].doubleValue != 0) {
-                snieg = json["snow"]["3h"].doubleValue
+                snow = json["snow"]["3h"].doubleValue
             } else {
-                deszcz = json["rain"]["3h"].doubleValue
+                rain = json["rain"]["3h"].doubleValue
             }
-            dzisiaj = ModelDzisiaj(temp: temp, opis: opis, deszcz: deszcz, snieg: snieg, wiatr: wiatr)
+            today = TodayModel(temp: temp, desc: desc, rain: rain, snow: snow, wind: wind)
         }
     }
-    if let dzisiaj = dzisiaj,
-        let nast24h = nast24h,
-        let pozniej = pozniej,
+    if let today = today,
+        let next24h = next24h,
+        let later = later,
         let cityName = cityName{
-        return PogodaModel(dzisiaj: dzisiaj, nast24h: nast24h, pozniej: pozniej, cityName: cityName)
+        return WeatherModel(today: today, next24h: next24h, later: later, cityName: cityName)
     } else {
         return nil
     }

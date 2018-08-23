@@ -8,13 +8,13 @@
 
 import Foundation
 
-public enum Stopien: String {
+public enum TempUnit: String {
     case c = "℃"
     case f = "℉"
     case k = "K"
 }
 
-public struct Temperatura {
+public struct Temperature {
     public var c: Double {
         return k - 273.15
     }
@@ -25,8 +25,8 @@ public struct Temperatura {
     
     public var k: Double
     
-    public func returnFormat(_ formatTemp: Stopien) -> Double {
-        switch formatTemp {
+    public func returnFormat(_ tempUnit: TempUnit) -> Double {
+        switch tempUnit {
         case .c:
             return self.c
         case .f:
