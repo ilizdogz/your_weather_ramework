@@ -82,8 +82,11 @@ func parse(_ results: [JSONType: JSON]) -> WeatherModel? {
                 let time = Date(timeIntervalSince1970: TimeInterval(dtInt))
                 let temp = Temperature(k: obj["main"]["temp"].doubleValue)
                 let desc = obj["weather"][0]["description"].stringValue
+                let pressure = obj["main"]["pressure"].intValue
+                let humidity = obj["main"]["humidity"].intValue
+                let clouds = obj["clouds"]["all"].intValue
                 if (index < 8) {
-                    tempNext24h.append(Next24hModel(time: time, desc: desc, temp: temp))
+                    tempNext24h.append(Next24hModel(time: time, desc: desc, temp: temp, pressure: pressure, humidity: humidity, clouds: clouds))
                 } else {
                     if (time.hour >= 21) {
                         tempLater.append(LaterModel(date: time, tempNight: temp, descNight: desc))
@@ -132,7 +135,10 @@ func parse(_ results: [JSONType: JSON]) -> WeatherModel? {
             } else {
                 rain = json["rain"]["3h"].doubleValue
             }
-            today = TodayModel(temp: temp, desc: desc, rain: rain, snow: snow, wind: wind)
+            let pressure = json["main"]["pressure"].intValue
+            let humidity = json["main"]["humidity"].intValue
+            let clouds = json["clouds"]["all"].intValue
+            today = TodayModel(temp: temp, desc: desc, rain: rain, snow: snow, wind: wind, pressure: pressure, humidity: humidity, clouds: clouds)
         }
     }
     if let today = today,

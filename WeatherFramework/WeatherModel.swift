@@ -22,12 +22,18 @@ public struct TodayModel {
     public var rain: Double
     public var snow: Double?
     public var wind: Double
+    public var pressure: Int
+    public var humidity: Int
+    public var clouds: Int
 }
 
 public struct Next24hModel {
     public var time: Date
     public var desc: String
     public var temp: Temperature
+    public var pressure: Int
+    public var humidity: Int
+    public var clouds: Int
 }
 
 public struct LaterModel {
