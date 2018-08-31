@@ -82,7 +82,7 @@ func parse(_ results: [JSONType: JSON]) -> WeatherModel? {
                 let time = Date(timeIntervalSince1970: TimeInterval(dtInt))
                 let temp = Temperature(k: obj["main"]["temp"].doubleValue)
                 let desc = obj["weather"][0]["description"].stringValue
-                let pressure = obj["main"]["pressure"].intValue
+                let pressure = Int(obj["main"]["pressure"].doubleValue)
                 let humidity = obj["main"]["humidity"].intValue
                 let clouds = obj["clouds"]["all"].intValue
                 if (index < 8) {
