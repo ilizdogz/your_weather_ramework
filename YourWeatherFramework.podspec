@@ -6,7 +6,7 @@ s.name = "YourWeatherFramework"
 s.summary = "Loads API data and provides essential classes for your_weather app"
 s.requires_arc = true
 
-s.version = "0.7.0"
+s.version = "0.8.0"
 # pod repo push YourWeatherPodspecs YourWeatherFramework.podspec
 
 s.license = { :type => "MIT", :file => "LICENSE" }
